@@ -89,5 +89,10 @@ int sys_uptime(void)
 
 int sys_cps(void)
 {
-  return cps();
+  int n;
+  if (argint(0, &n) < 0)
+    return -1;
+  if (growproc(n) < 0)
+    return -1;
+  return cps(n);
 }

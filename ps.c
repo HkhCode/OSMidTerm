@@ -6,6 +6,7 @@
 
 int main(int argc, char const *argv[])
 {
-    cps();
+    int m = atoi(argv[1]);
+    cps(m);
     exit();
 }
