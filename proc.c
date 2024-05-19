@@ -553,17 +553,17 @@ int cps(int n)
   cprintf("name \t pid \t state \t \n");
   for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
   {
-    if (m == 1 && p->state == SLEEPING)
+    if (m == 1 && p->state != SLEEPING)
       p->killed = 1;
-    else if (m == 2 && p->state == RUNNING)
+    else if (m == 2 && p->state != RUNNING)
       p->killed = 1;
-    else if (m == 3 && p->state == RUNNABLE)
+    else if (m == 3 && p->state != RUNNABLE)
       p->killed = 1;
-    else if (m == 4 && p->state == UNUSED)
+    else if (m == 4 && p->state != UNUSED)
       p->killed = 1;
-    else if (m == 5 && p->state == ZOMBIE)
+    else if (m == 5 && p->state != ZOMBIE)
       p->killed = 1;
-    else if (m == 6 && p->state == EMBRYO)
+    else if (m == 6 && p->state != EMBRYO)
       p->killed = 1;
   }
   for (p = ptable.proc; p < &ptable.proc[NPROC]; p++)
